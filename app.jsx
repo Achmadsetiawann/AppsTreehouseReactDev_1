@@ -1,6 +1,5 @@
 {/* Inisiasi Data Player */}
 
-
 var PLAYERS = [
   {
     name: "Achmad Setiawan",
@@ -20,8 +19,6 @@ var PLAYERS = [
 ];
   
 var nextId = 4;
-
-  
 
 {/* Penggunaan Fungsi Stopwatch */}  
 var Stopwatch = React.createClass({
@@ -72,19 +69,13 @@ this.setState
   });  
 },
 
-
-
-  
 render: function(){
 
 {/* Fungsi Perhitungan Detik */}
     var seconds = Math.floor(this.state.elapsedTime / 1000);
-   
-  
   
     {/* 
       Fungsi 1 :
-      
       var startStop;
       if(this.state.running){
       startStop = <button>Stop</button>;
@@ -93,14 +84,10 @@ render: function(){
       }
       
       Fungsi 2 :
-      
       var startStop = this.state.running ? <button>Stop</button> : <button>Start</button>;
     */} 
   
-  
-  
     return(
-    
     <div className="stopwatch">
       <h2>Stopwatch</h2>
       <div className="stopwatch-time">{seconds}</div>
@@ -112,12 +99,9 @@ render: function(){
       }
       <button onClick={this.onReset}>Reset</button>
     </div>
-  
       );
     }
   });
-
-  
 
 {/* Fungsi Penambahan AddPlayerForm */}  
 var AddPlayerForm = React.createClass({
@@ -141,13 +125,9 @@ var AddPlayerForm = React.createClass({
     this.props.onAdd(this.state.name);
     this.setState({name: ""});
   },
-
- 
-  
   
   render: function() {
     return (
-  
       <div className="add-player-form">
         <form onSubmit={this.onSubmit}>
           <input type="text" value={this.state.name} onChange={this.onNameChange} />
@@ -159,17 +139,12 @@ var AddPlayerForm = React.createClass({
   }
 });
 
-
-
 {/* Fungsi Perhitungan Total Players & Total Points */}
 function Stats(props) {
   var totalPlayers = props.players.length;
   var totalPoints = props.players.reduce(function(total, player){
     return total + player.score;
   }, 0);
-
-  
-  
   
   return (
     <table className="stats">
@@ -193,7 +168,6 @@ Stats.propTypes = {
 
 function Header(props) {
   return (
-  
     <div className="header">
       <Stats players={props.players}/>
       <h1>{props.title}</h1>
@@ -244,7 +218,6 @@ Player.propTypes = {
   onRemove: React.PropTypes.func.isRequired,
 };
 
-
 {/* Deklarasi Kebutuhan Props pada Form Application dan
     Fungsi Perhitungan Score, PlayersAdd & RemovePlayers
 */}
@@ -290,15 +263,10 @@ var Application = React.createClass({
     this.setState(this.state);
   },
 
-
-
-
-
   render: function() {
     return (
       <div className="scoreboard">
         <Header title={this.props.title} players={this.state.players} />
-      
         <div className="players">
           {this.state.players.map(function(player, index) {
             return (
@@ -316,7 +284,5 @@ var Application = React.createClass({
     );
   }
 });  
-
-
 
 ReactDOM.render(<Application initialPlayers={PLAYERS}/>, document.getElementById('container'));
